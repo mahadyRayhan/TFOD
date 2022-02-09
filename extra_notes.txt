@@ -1,0 +1,10 @@
+mAP on TF2.x
+You need to run the model_main_tf2.py script in two shells simultaneously.
+
+In the first shell, you run it with arguments --model_dir and --pipeline_config_path, for training, like below:
+
+python model_main_tf2.py --model_dir my-model --pipeline_config_path my-model/pipeline.config --alsologtostderr
+In the second shell, you need to pass an extra argument called --checkpoint_dir, pointing to the folder where checkpoints are stored, like below:
+
+python model_main_tf2.py --model_dir my-model --pipeline_config_path my-model/pipeline.config --checkpont_dir my-model
+This will trigger evaluation mode of the script, and TensorBoard will start to show mAP and recall metrics.
