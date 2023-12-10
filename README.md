@@ -67,14 +67,7 @@ First create a folder where you like to store all your files(pre-trained model, 
 ```python
 pwd
 ```
-
-
-
-
     '/home/ubuntu-20/Desktop/TensorFlow'
-
-
-
 
 ```python
 !git clone https://github.com/tensorflow/models.git
@@ -99,22 +92,11 @@ Tensorflow Object Detection API uses Protobufs to configure model and training p
 ```python
 cd models/research/
 ```
-
     /home/ubuntu-20/Desktop/TensorFlow/models/research
-
-
-
 ```python
 pwd
 ```
-
-
-
-
     '/home/ubuntu-20/Desktop/TensorFlow/models/research'
-
-
-
 Now execute the Protobuf installation command here.
 
 
@@ -131,12 +113,6 @@ Now execute the Protobuf installation command here.
 !pip install cython
 ```
 
-    Collecting cython
-      Downloading Cython-0.29.26-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl (1.9 MB)
-    [K     |████████████████████████████████| 1.9 MB 7.6 MB/s eta 0:00:01
-    [?25hInstalling collected packages: cython
-    Successfully installed cython-0.29.26
-
 
 Next clone "pycocotools" repo from GitHub and execute the following commands one by one.
 
@@ -145,81 +121,14 @@ Next clone "pycocotools" repo from GitHub and execute the following commands one
 !git clone https://github.com/cocodataset/cocoapi.git
 ```
 
-    Cloning into 'cocoapi'...
-    remote: Enumerating objects: 975, done.[K
-    remote: Total 975 (delta 0), reused 0 (delta 0), pack-reused 975[K
-    Receiving objects: 100% (975/975), 11.72 MiB | 13.58 MiB/s, done.
-    Resolving deltas: 100% (576/576), done.
-
-
-
 ```python
 cd cocoapi/PythonAPI
 ```
-
     /home/ubuntu-20/Desktop/TensorFlow/models/research/cocoapi/PythonAPI
-
-
 
 ```python
 !make
 ```
-
-    python setup.py build_ext --inplace
-    running build_ext
-    cythoning pycocotools/_mask.pyx to pycocotools/_mask.c
-    /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages/Cython/Compiler/Main.py:369: FutureWarning: Cython directive 'language_level' not set, using 2 for now (Py2). This will change in a later release! File: /home/ubuntu-20/Desktop/TensorFlow/models/research/cocoapi/PythonAPI/pycocotools/_mask.pyx
-      tree = Parsing.p_module(s, pxd, full_module_name)
-    building 'pycocotools._mask' extension
-    gcc -pthread -B /home/ubuntu-20/anaconda3/envs/tensorflow/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu-20/anaconda3/envs/tensorflow/include -I/home/ubuntu-20/anaconda3/envs/tensorflow/include -fPIC -O2 -isystem /home/ubuntu-20/anaconda3/envs/tensorflow/include -fPIC -I/home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages/numpy/core/include -I../common -I/home/ubuntu-20/anaconda3/envs/tensorflow/include/python3.9 -c ../common/maskApi.c -o build/temp.linux-x86_64-3.9/../common/maskApi.o -Wno-cpp -Wno-unused-function -std=c99
-    [01m[K../common/maskApi.c:[m[K In function ‘[01m[KrleDecode[m[K’:
-    [01m[K../common/maskApi.c:46:7:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kfor[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
-       46 |       [01;35m[Kfor[m[K( k=0; k<R[i].cnts[j]; k++ ) *(M++)=v; v=!v; }}
-          |       [01;35m[K^~~[m[K
-    [01m[K../common/maskApi.c:46:49:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kfor[m[K’
-       46 |       for( k=0; k<R[i].cnts[j]; k++ ) *(M++)=v; [01;36m[Kv[m[K=!v; }}
-          |                                                 [01;36m[K^[m[K
-    [01m[K../common/maskApi.c:[m[K In function ‘[01m[KrleFrPoly[m[K’:
-    [01m[K../common/maskApi.c:166:3:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kfor[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
-      166 |   [01;35m[Kfor[m[K(j=0; j<k; j++) x[j]=(int)(scale*xy[j*2+0]+.5); x[k]=x[0];
-          |   [01;35m[K^~~[m[K
-    [01m[K../common/maskApi.c:166:54:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kfor[m[K’
-      166 |   for(j=0; j<k; j++) x[j]=(int)(scale*xy[j*2+0]+.5); [01;36m[Kx[m[K[k]=x[0];
-          |                                                      [01;36m[K^[m[K
-    [01m[K../common/maskApi.c:167:3:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kfor[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
-      167 |   [01;35m[Kfor[m[K(j=0; j<k; j++) y[j]=(int)(scale*xy[j*2+1]+.5); y[k]=y[0];
-          |   [01;35m[K^~~[m[K
-    [01m[K../common/maskApi.c:167:54:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kfor[m[K’
-      167 |   for(j=0; j<k; j++) y[j]=(int)(scale*xy[j*2+1]+.5); [01;36m[Ky[m[K[k]=y[0];
-          |                                                      [01;36m[K^[m[K
-    [01m[K../common/maskApi.c:[m[K In function ‘[01m[KrleToString[m[K’:
-    [01m[K../common/maskApi.c:212:7:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kif[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
-      212 |       [01;35m[Kif[m[K(more) c |= 0x20; c+=48; s[p++]=c;
-          |       [01;35m[K^~[m[K
-    [01m[K../common/maskApi.c:212:27:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
-      212 |       if(more) c |= 0x20; [01;36m[Kc[m[K+=48; s[p++]=c;
-          |                           [01;36m[K^[m[K
-    [01m[K../common/maskApi.c:[m[K In function ‘[01m[KrleFrString[m[K’:
-    [01m[K../common/maskApi.c:220:3:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kwhile[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
-      220 |   [01;35m[Kwhile[m[K( s[m] ) m++; cnts=malloc(sizeof(uint)*m); m=0;
-          |   [01;35m[K^~~~~[m[K
-    [01m[K../common/maskApi.c:220:22:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kwhile[m[K’
-      220 |   while( s[m] ) m++; [01;36m[Kcnts[m[K=malloc(sizeof(uint)*m); m=0;
-          |                      [01;36m[K^~~~[m[K
-    [01m[K../common/maskApi.c:228:5:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kif[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
-      228 |     [01;35m[Kif[m[K(m>2) x+=(long) cnts[m-2]; cnts[m++]=(uint) x;
-          |     [01;35m[K^~[m[K
-    [01m[K../common/maskApi.c:228:34:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
-      228 |     if(m>2) x+=(long) cnts[m-2]; [01;36m[Kcnts[m[K[m++]=(uint) x;
-          |                                  [01;36m[K^~~~[m[K
-    gcc -pthread -B /home/ubuntu-20/anaconda3/envs/tensorflow/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu-20/anaconda3/envs/tensorflow/include -I/home/ubuntu-20/anaconda3/envs/tensorflow/include -fPIC -O2 -isystem /home/ubuntu-20/anaconda3/envs/tensorflow/include -fPIC -I/home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages/numpy/core/include -I../common -I/home/ubuntu-20/anaconda3/envs/tensorflow/include/python3.9 -c pycocotools/_mask.c -o build/temp.linux-x86_64-3.9/pycocotools/_mask.o -Wno-cpp -Wno-unused-function -std=c99
-    creating build/lib.linux-x86_64-3.9
-    creating build/lib.linux-x86_64-3.9/pycocotools
-    gcc -pthread -B /home/ubuntu-20/anaconda3/envs/tensorflow/compiler_compat -shared -Wl,-rpath,/home/ubuntu-20/anaconda3/envs/tensorflow/lib -Wl,-rpath-link,/home/ubuntu-20/anaconda3/envs/tensorflow/lib -L/home/ubuntu-20/anaconda3/envs/tensorflow/lib -L/home/ubuntu-20/anaconda3/envs/tensorflow/lib -Wl,-rpath,/home/ubuntu-20/anaconda3/envs/tensorflow/lib -Wl,-rpath-link,/home/ubuntu-20/anaconda3/envs/tensorflow/lib -L/home/ubuntu-20/anaconda3/envs/tensorflow/lib build/temp.linux-x86_64-3.9/../common/maskApi.o build/temp.linux-x86_64-3.9/pycocotools/_mask.o -o build/lib.linux-x86_64-3.9/pycocotools/_mask.cpython-39-x86_64-linux-gnu.so
-    copying build/lib.linux-x86_64-3.9/pycocotools/_mask.cpython-39-x86_64-linux-gnu.so -> pycocotools
-    rm -rf build
-
-
 
 ```python
 cp -r pycocotools /home/ubuntu-20/Desktop/TensorFlow/models/research
@@ -235,41 +144,22 @@ Now all the dependencies necessary for installing Object Detection API are done.
 ```python
 pwd
 ```
-
-
-
-
     '/home/ubuntu-20/Desktop/TensorFlow/models/research/cocoapi/PythonAPI'
 
-
-
-
 ```python
 cd ..
 ```
-
     /home/ubuntu-20/Desktop/TensorFlow/models/research/cocoapi
 
-
-
 ```python
 cd ..
 ```
-
     /home/ubuntu-20/Desktop/TensorFlow/models/research
-
-
 
 ```python
 pwd
 ```
-
-
-
-
     '/home/ubuntu-20/Desktop/TensorFlow/models/research'
-
-
 
 Next run the following two commands to install **"Object Detection API"**
 
@@ -282,320 +172,6 @@ cp object_detection/packages/tf2/setup.py .
 ```python
 !python -m pip install .
 ```
-
-    Processing /home/ubuntu-20/Desktop/TensorFlow/models/research
-    [33m  DEPRECATION: A future pip version will change local packages to be built in-place without first copying to a temporary directory. We recommend you use --use-feature=in-tree-build to test your packages with this new behavior before it becomes the default.
-       pip 21.3 will remove support for this functionality. You can find discussion regarding this at https://github.com/pypa/pip/issues/7555.[0m
-    Collecting avro-python3
-      Downloading avro-python3-1.10.2.tar.gz (38 kB)
-    Collecting apache-beam
-      Downloading apache-beam-2.35.0.zip (2.6 MB)
-    [K     |████████████████████████████████| 2.6 MB 10.0 MB/s eta 0:00:01
-    [?25hCollecting pillow
-      Downloading Pillow-9.0.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.3 MB)
-    [K     |████████████████████████████████| 4.3 MB 27.3 MB/s eta 0:00:01
-    [?25hCollecting lxml
-      Downloading lxml-4.7.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl (6.9 MB)
-    [K     |████████████████████████████████| 6.9 MB 20.1 MB/s eta 0:00:01
-    [?25hCollecting matplotlib
-      Downloading matplotlib-3.5.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (11.2 MB)
-    [K     |████████████████████████████████| 11.2 MB 31.2 MB/s eta 0:00:01
-    [?25hRequirement already satisfied: Cython in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from object-detection==0.1) (0.29.26)
-    Collecting contextlib2
-      Downloading contextlib2-21.6.0-py2.py3-none-any.whl (13 kB)
-    Collecting tf-slim
-      Downloading tf_slim-1.1.0-py2.py3-none-any.whl (352 kB)
-    [K     |████████████████████████████████| 352 kB 31.6 MB/s eta 0:00:01
-    [?25hRequirement already satisfied: six in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from object-detection==0.1) (1.15.0)
-    Collecting pycocotools
-      Downloading pycocotools-2.0.4.tar.gz (106 kB)
-    [K     |████████████████████████████████| 106 kB 54.9 MB/s eta 0:00:01
-    [?25h  Installing build dependencies ... [?25ldone
-    [?25h  Getting requirements to build wheel ... [?25ldone
-    [?25h    Preparing wheel metadata ... [?25ldone
-    [?25hCollecting lvis
-      Downloading lvis-0.5.3-py3-none-any.whl (14 kB)
-    Requirement already satisfied: scipy in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from object-detection==0.1) (1.6.2)
-    Collecting pandas
-      Downloading pandas-1.4.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.7 MB)
-    [K     |████████████████████████████████| 11.7 MB 16.0 MB/s eta 0:00:01
-    [?25hCollecting tf-models-official>=2.5.1
-      Downloading tf_models_official-2.7.0-py2.py3-none-any.whl (1.8 MB)
-    [K     |████████████████████████████████| 1.8 MB 31.7 MB/s eta 0:00:01
-    [?25hCollecting tensorflow_io
-      Downloading tensorflow_io-0.23.1-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (23.1 MB)
-    [K     |████████████████████████████████| 23.1 MB 24.7 MB/s eta 0:00:01
-    [?25hCollecting keras
-      Downloading keras-2.7.0-py2.py3-none-any.whl (1.3 MB)
-    [K     |████████████████████████████████| 1.3 MB 25.4 MB/s eta 0:00:01
-    [?25hCollecting tensorflow-hub>=0.6.0
-      Downloading tensorflow_hub-0.12.0-py2.py3-none-any.whl (108 kB)
-    [K     |████████████████████████████████| 108 kB 41.8 MB/s eta 0:00:01
-    [?25hCollecting oauth2client
-      Downloading oauth2client-4.1.3-py2.py3-none-any.whl (98 kB)
-    [K     |████████████████████████████████| 98 kB 5.0 MB/s  eta 0:00:01
-    [?25hCollecting seqeval
-      Downloading seqeval-1.2.2.tar.gz (43 kB)
-    [K     |████████████████████████████████| 43 kB 1.7 MB/s  eta 0:00:01
-    [?25hCollecting sentencepiece
-      Downloading sentencepiece-0.1.96-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.2 MB)
-    [K     |████████████████████████████████| 1.2 MB 13.2 MB/s eta 0:00:01
-    [?25hCollecting google-api-python-client>=1.6.7
-      Downloading google_api_python_client-2.36.0-py2.py3-none-any.whl (8.0 MB)
-    [K     |████████████████████████████████| 8.0 MB 27.4 MB/s eta 0:00:01
-    [?25hCollecting psutil>=5.4.3
-      Downloading psutil-5.9.0-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (280 kB)
-    [K     |████████████████████████████████| 280 kB 24.5 MB/s eta 0:00:01
-    [?25hCollecting gin-config
-      Downloading gin_config-0.5.0-py3-none-any.whl (61 kB)
-    [K     |████████████████████████████████| 61 kB 1.3 MB/s eta 0:00:011
-    [?25hCollecting tensorflow-datasets
-      Downloading tensorflow_datasets-4.4.0-py3-none-any.whl (4.0 MB)
-    [K     |████████████████████████████████| 4.0 MB 32.3 MB/s eta 0:00:01
-    [?25hCollecting py-cpuinfo>=3.3.0
-      Downloading py-cpuinfo-8.0.0.tar.gz (99 kB)
-    [K     |████████████████████████████████| 99 kB 8.8 MB/s  eta 0:00:01
-    [?25hCollecting tensorflow-addons
-      Downloading tensorflow_addons-0.15.0-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.1 MB)
-    [K     |████████████████████████████████| 1.1 MB 28.4 MB/s eta 0:00:01
-    [?25hCollecting tensorflow-model-optimization>=0.4.1
-      Downloading tensorflow_model_optimization-0.7.0-py2.py3-none-any.whl (213 kB)
-    [K     |████████████████████████████████| 213 kB 38.5 MB/s eta 0:00:01
-    [?25hCollecting kaggle>=1.3.9
-      Downloading kaggle-1.5.12.tar.gz (58 kB)
-    [K     |████████████████████████████████| 58 kB 6.1 MB/s  eta 0:00:01
-    [?25hCollecting sacrebleu
-      Downloading sacrebleu-2.0.0-py3-none-any.whl (90 kB)
-    [K     |████████████████████████████████| 90 kB 9.6 MB/s  eta 0:00:01
-    [?25hCollecting opencv-python-headless
-      Downloading opencv_python_headless-4.5.5.62-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (47.7 MB)
-    [K     |████████████████████████████████| 47.7 MB 25.7 MB/s eta 0:00:01
-    [?25hCollecting tensorflow-text>=2.7.0
-      Downloading tensorflow_text-2.7.3-cp39-cp39-manylinux2010_x86_64.whl (4.9 MB)
-    [K     |████████████████████████████████| 4.9 MB 32.5 MB/s eta 0:00:01
-    [?25hCollecting tensorflow>=2.7.0
-      Downloading tensorflow-2.7.0-cp39-cp39-manylinux2010_x86_64.whl (489.7 MB)
-    [K     |████████████████████████████████| 489.7 MB 36 kB/s s eta 0:00:011
-    [?25hRequirement already satisfied: numpy>=1.15.4 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tf-models-official>=2.5.1->object-detection==0.1) (1.19.2)
-    Collecting pyyaml>=5.1
-      Downloading PyYAML-6.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (661 kB)
-    [K     |████████████████████████████████| 661 kB 525 kB/s eta 0:00:01
-    [?25hCollecting uritemplate<5,>=3.0.1
-      Downloading uritemplate-4.1.1-py2.py3-none-any.whl (10 kB)
-    Collecting httplib2<1dev,>=0.15.0
-      Downloading httplib2-0.20.2-py3-none-any.whl (96 kB)
-    [K     |████████████████████████████████| 96 kB 5.0 MB/s  eta 0:00:01
-    [?25hRequirement already satisfied: google-auth<3.0.0dev,>=1.16.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (1.21.3)
-    Collecting google-api-core<3.0.0dev,>=1.21.0
-      Downloading google_api_core-2.4.0-py2.py3-none-any.whl (111 kB)
-    [K     |████████████████████████████████| 111 kB 31.6 MB/s eta 0:00:01
-    [?25hCollecting google-auth-httplib2>=0.1.0
-      Downloading google_auth_httplib2-0.1.0-py2.py3-none-any.whl (9.3 kB)
-    Collecting google-auth<3.0.0dev,>=1.16.0
-      Using cached google_auth-2.5.0-py2.py3-none-any.whl (157 kB)
-    Requirement already satisfied: requests<3.0.0dev,>=2.18.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from google-api-core<3.0.0dev,>=1.21.0->google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (2.27.1)
-    Collecting googleapis-common-protos<2.0dev,>=1.52.0
-      Downloading googleapis_common_protos-1.54.0-py2.py3-none-any.whl (207 kB)
-    [K     |████████████████████████████████| 207 kB 46.3 MB/s eta 0:00:01
-    [?25hRequirement already satisfied: protobuf>=3.12.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from google-api-core<3.0.0dev,>=1.21.0->google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (3.19.1)
-    Requirement already satisfied: setuptools>=40.3.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from google-api-core<3.0.0dev,>=1.21.0->google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (58.0.4)
-    Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from google-auth<3.0.0dev,>=1.16.0->google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (0.2.8)
-    Requirement already satisfied: cachetools<6.0,>=2.0.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from google-auth<3.0.0dev,>=1.16.0->google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (4.1.1)
-    Requirement already satisfied: rsa<5,>=3.1.4 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from google-auth<3.0.0dev,>=1.16.0->google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (4.6)
-    Requirement already satisfied: pyparsing!=3.0.0,!=3.0.1,!=3.0.2,!=3.0.3,<4,>=2.4.2 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from httplib2<1dev,>=0.15.0->google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (3.0.7)
-    Requirement already satisfied: certifi in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from kaggle>=1.3.9->tf-models-official>=2.5.1->object-detection==0.1) (2021.10.8)
-    Requirement already satisfied: python-dateutil in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from kaggle>=1.3.9->tf-models-official>=2.5.1->object-detection==0.1) (2.8.2)
-    Collecting tqdm
-      Downloading tqdm-4.62.3-py2.py3-none-any.whl (76 kB)
-    [K     |████████████████████████████████| 76 kB 3.8 MB/s  eta 0:00:01
-    [?25hCollecting python-slugify
-      Downloading python_slugify-5.0.2-py2.py3-none-any.whl (6.7 kB)
-    Requirement already satisfied: urllib3 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from kaggle>=1.3.9->tf-models-official>=2.5.1->object-detection==0.1) (1.25.11)
-    Collecting pytz>=2020.1
-      Downloading pytz-2021.3-py2.py3-none-any.whl (503 kB)
-    [K     |████████████████████████████████| 503 kB 10.2 MB/s eta 0:00:01
-    [?25hRequirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pyasn1-modules>=0.2.1->google-auth<3.0.0dev,>=1.16.0->google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (0.4.8)
-    Requirement already satisfied: idna<4,>=2.5 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from requests<3.0.0dev,>=2.18.0->google-api-core<3.0.0dev,>=1.21.0->google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (2.10)
-    Requirement already satisfied: charset-normalizer~=2.0.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from requests<3.0.0dev,>=2.18.0->google-api-core<3.0.0dev,>=1.21.0->google-api-python-client>=1.6.7->tf-models-official>=2.5.1->object-detection==0.1) (2.0.4)
-    Requirement already satisfied: absl-py>=0.4.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (0.15.0)
-    Requirement already satisfied: google-pasta>=0.1.1 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (0.2.0)
-    Requirement already satisfied: keras-preprocessing>=1.1.1 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (1.1.2)
-    Requirement already satisfied: h5py>=2.9.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (2.10.0)
-    Collecting libclang>=9.0.1
-      Downloading libclang-12.0.0-2-py2.py3-none-manylinux1_x86_64.whl (13.3 MB)
-    [K     |████████████████████████████████| 13.3 MB 37.6 MB/s eta 0:00:01
-    [?25hRequirement already satisfied: tensorboard~=2.6 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (2.6.0)
-    Requirement already satisfied: termcolor>=1.1.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (1.1.0)
-    Collecting tensorflow-estimator<2.8,~=2.7.0rc0
-      Downloading tensorflow_estimator-2.7.0-py2.py3-none-any.whl (463 kB)
-    [K     |████████████████████████████████| 463 kB 36.9 MB/s eta 0:00:01
-    [?25hRequirement already satisfied: wrapt>=1.11.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (1.13.3)
-    Requirement already satisfied: opt-einsum>=2.3.2 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (3.1.0)
-    Requirement already satisfied: wheel<1.0,>=0.32.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (0.37.1)
-    Requirement already satisfied: gast<0.5.0,>=0.2.1 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (0.4.0)
-    Requirement already satisfied: grpcio<2.0,>=1.24.3 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (1.42.0)
-    Collecting tensorflow-io-gcs-filesystem>=0.21.0
-      Downloading tensorflow_io_gcs_filesystem-0.23.1-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (2.1 MB)
-    [K     |████████████████████████████████| 2.1 MB 31.8 MB/s eta 0:00:01
-    [?25hRequirement already satisfied: astunparse>=1.6.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (1.6.3)
-    Requirement already satisfied: typing-extensions>=3.6.6 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (4.0.1)
-    Requirement already satisfied: flatbuffers<3.0,>=1.12 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (2.0)
-    Requirement already satisfied: markdown>=2.6.8 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (3.3.4)
-    Collecting google-auth<3.0.0dev,>=1.16.0
-      Downloading google_auth-1.35.0-py2.py3-none-any.whl (152 kB)
-    [K     |████████████████████████████████| 152 kB 29.7 MB/s eta 0:00:01
-    [?25hRequirement already satisfied: werkzeug>=0.11.15 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (1.0.1)
-    Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (0.4.1)
-    Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (1.6.0)
-    Requirement already satisfied: tensorboard-data-server<0.7.0,>=0.6.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (0.6.0)
-    Requirement already satisfied: requests-oauthlib>=0.7.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.6->tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (1.3.0)
-    Requirement already satisfied: oauthlib>=3.0.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.6->tensorflow>=2.7.0->tf-models-official>=2.5.1->object-detection==0.1) (3.1.0)
-    Collecting dm-tree~=0.1.1
-      Downloading dm_tree-0.1.6-cp39-cp39-manylinux_2_24_x86_64.whl (94 kB)
-    [K     |████████████████████████████████| 94 kB 3.1 MB/s  eta 0:00:01
-    [?25hCollecting crcmod<2.0,>=1.7
-      Downloading crcmod-1.7.tar.gz (89 kB)
-    [K     |████████████████████████████████| 89 kB 7.4 MB/s  eta 0:00:01
-    [?25hCollecting orjson<4.0
-      Downloading orjson-3.6.6-cp39-cp39-manylinux_2_24_x86_64.whl (245 kB)
-    [K     |████████████████████████████████| 245 kB 69.9 MB/s eta 0:00:01
-    [?25hCollecting dill<0.3.2,>=0.3.1.1
-      Downloading dill-0.3.1.1.tar.gz (151 kB)
-    [K     |████████████████████████████████| 151 kB 33.1 MB/s eta 0:00:01
-    [?25hCollecting fastavro<2,>=0.21.4
-      Downloading fastavro-1.4.9-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.5 MB)
-    [K     |████████████████████████████████| 2.5 MB 22.3 MB/s eta 0:00:01
-    [?25hCollecting hdfs<3.0.0,>=2.1.0
-      Downloading hdfs-2.6.0-py3-none-any.whl (33 kB)
-    Collecting httplib2<1dev,>=0.15.0
-      Downloading httplib2-0.19.1-py3-none-any.whl (95 kB)
-    [K     |████████████████████████████████| 95 kB 4.1 MB/s  eta 0:00:01
-    [?25hCollecting pymongo<4.0.0,>=3.8.0
-      Downloading pymongo-3.12.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (516 kB)
-    [K     |████████████████████████████████| 516 kB 40.7 MB/s eta 0:00:01
-    [?25hCollecting proto-plus<2,>=1.7.1
-      Downloading proto_plus-1.19.9-py3-none-any.whl (45 kB)
-    [K     |████████████████████████████████| 45 kB 3.0 MB/s  eta 0:00:01
-    [?25hCollecting pyarrow<7.0.0,>=0.15.1
-      Downloading pyarrow-6.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25.6 MB)
-    [K     |████████████████████████████████| 25.6 MB 23.7 MB/s eta 0:00:01
-    [?25hCollecting pydot<2,>=1.2.0
-      Downloading pydot-1.4.2-py2.py3-none-any.whl (21 kB)
-    Collecting typing-extensions>=3.6.6
-      Downloading typing_extensions-3.10.0.2-py3-none-any.whl (26 kB)
-    Collecting docopt
-      Downloading docopt-0.6.2.tar.gz (25 kB)
-    Collecting pyparsing!=3.0.0,!=3.0.1,!=3.0.2,!=3.0.3,<4,>=2.4.2
-      Downloading pyparsing-2.4.7-py2.py3-none-any.whl (67 kB)
-    [K     |████████████████████████████████| 67 kB 4.9 MB/s  eta 0:00:01
-    [?25hCollecting kiwisolver>=1.1.0
-      Downloading kiwisolver-1.3.2-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
-    [K     |████████████████████████████████| 1.6 MB 48.6 MB/s eta 0:00:01
-    [?25hCollecting cycler>=0.10.0
-      Downloading cycler-0.11.0-py3-none-any.whl (6.4 kB)
-    Collecting opencv-python>=4.1.0.25
-      Using cached opencv_python-4.5.5.62-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (60.4 MB)
-    Requirement already satisfied: packaging>=20.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from matplotlib->object-detection==0.1) (21.3)
-    Collecting fonttools>=4.22.0
-      Downloading fonttools-4.29.0-py3-none-any.whl (895 kB)
-    [K     |████████████████████████████████| 895 kB 18.4 MB/s eta 0:00:01
-    [?25hCollecting numpy>=1.15.4
-      Downloading numpy-1.20.3-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (15.4 MB)
-    [K     |████████████████████████████████| 15.4 MB 22.5 MB/s eta 0:00:01
-    [?25hCollecting text-unidecode>=1.3
-      Downloading text_unidecode-1.3-py2.py3-none-any.whl (78 kB)
-    [K     |████████████████████████████████| 78 kB 6.7 MB/s  eta 0:00:011
-    [?25hCollecting portalocker
-      Downloading portalocker-2.3.2-py2.py3-none-any.whl (15 kB)
-    Collecting regex
-      Downloading regex-2022.1.18-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (763 kB)
-    [K     |████████████████████████████████| 763 kB 17.0 MB/s eta 0:00:01
-    [?25hCollecting tabulate>=0.8.9
-      Downloading tabulate-0.8.9-py3-none-any.whl (25 kB)
-    Collecting colorama
-      Downloading colorama-0.4.4-py2.py3-none-any.whl (16 kB)
-    Collecting scikit-learn>=0.21.3
-      Downloading scikit_learn-1.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (26.4 MB)
-    [K     |████████████████████████████████| 26.4 MB 29.3 MB/s eta 0:00:01
-    [?25hCollecting joblib>=0.11
-      Downloading joblib-1.1.0-py2.py3-none-any.whl (306 kB)
-    [K     |████████████████████████████████| 306 kB 31.9 MB/s eta 0:00:01
-    [?25hCollecting threadpoolctl>=2.0.0
-      Downloading threadpoolctl-3.0.0-py3-none-any.whl (14 kB)
-    Collecting typeguard>=2.7
-      Downloading typeguard-2.13.3-py3-none-any.whl (17 kB)
-    Collecting promise
-      Downloading promise-2.3.tar.gz (19 kB)
-    Requirement already satisfied: attrs>=18.1.0 in /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from tensorflow-datasets->tf-models-official>=2.5.1->object-detection==0.1) (21.4.0)
-    Collecting tensorflow-metadata
-      Downloading tensorflow_metadata-1.6.0-py3-none-any.whl (48 kB)
-    [K     |████████████████████████████████| 48 kB 4.9 MB/s  eta 0:00:01
-    [?25hCollecting future
-      Downloading future-0.18.2.tar.gz (829 kB)
-    [K     |████████████████████████████████| 829 kB 56.3 MB/s eta 0:00:01
-    [?25hBuilding wheels for collected packages: object-detection, kaggle, py-cpuinfo, apache-beam, crcmod, dill, avro-python3, docopt, pycocotools, seqeval, future, promise
-      Building wheel for object-detection (setup.py) ... [?25ldone
-    [?25h  Created wheel for object-detection: filename=object_detection-0.1-py3-none-any.whl size=1651960 sha256=b4a770825456ecb980e9c1194be56efd5c7b82398e1ee141758090889036b201
-      Stored in directory: /tmp/pip-ephem-wheel-cache-_lazcpli/wheels/39/13/de/7907e0ebd1103d93d3fbbf5800d2127ab2314a9468e208dd7d
-      Building wheel for kaggle (setup.py) ... [?25ldone
-    [?25h  Created wheel for kaggle: filename=kaggle-1.5.12-py3-none-any.whl size=73051 sha256=11a9da565a8f68f81379a0ebf7562e418661845909e9b01ee3323f6cb4e36ddd
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/ac/b2/c3/fa4706d469b5879105991d1c8be9a3c2ef329ba9fe2ce5085e
-      Building wheel for py-cpuinfo (setup.py) ... [?25ldone
-    [?25h  Created wheel for py-cpuinfo: filename=py_cpuinfo-8.0.0-py3-none-any.whl size=22257 sha256=480b6b4d0882ec3d7c8792187a30589cdddc9c2f33798bf4df11bda240dca83c
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/a9/33/c2/bcf6550ff9c95f699d7b2f261c8520b42b7f7c33b6e6920e29
-      Building wheel for apache-beam (setup.py) ... [?25ldone
-    [?25h  Created wheel for apache-beam: filename=apache_beam-2.35.0-cp39-cp39-linux_x86_64.whl size=4559874 sha256=785b201cbc0b0006b772fb07a0f4704b9a479d0f24fc7c3362227910dfbf02a8
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/bd/f1/0a/5766032006be3a4bb638cabefcf84bd192a747f3ef2a48adbb
-      Building wheel for crcmod (setup.py) ... [?25ldone
-    [?25h  Created wheel for crcmod: filename=crcmod-1.7-cp39-cp39-linux_x86_64.whl size=23681 sha256=a74f294bda1fac48d202425d751e863a3f667e4510f60ad5124a5868cbb4f71c
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/4a/6c/a6/ffdd136310039bf226f2707a9a8e6857be7d70a3fc061f6b36
-      Building wheel for dill (setup.py) ... [?25ldone
-    [?25h  Created wheel for dill: filename=dill-0.3.1.1-py3-none-any.whl size=78544 sha256=25bb4c4730b62c27f2d0aacc663fffe214fb03bc0ac7e24b69b8dc65de7c67c3
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/4f/0b/ce/75d96dd714b15e51cb66db631183ea3844e0c4a6d19741a149
-      Building wheel for avro-python3 (setup.py) ... [?25ldone
-    [?25h  Created wheel for avro-python3: filename=avro_python3-1.10.2-py3-none-any.whl size=44010 sha256=4239a0a07dc1701f14570d4f9d481bc2baf29fa4fc70eb64f9edb18fa6a7dda8
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/5a/29/4d/510c0e098c49c5e49519f430481a5425e60b8752682d7b1e55
-      Building wheel for docopt (setup.py) ... [?25ldone
-    [?25h  Created wheel for docopt: filename=docopt-0.6.2-py2.py3-none-any.whl size=13723 sha256=cb7c111b7d9cabb89c247e06924c67af85cf484fea43dae60086e1c65e8be41d
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/70/4a/46/1309fc853b8d395e60bafaf1b6df7845bdd82c95fd59dd8d2b
-      Building wheel for pycocotools (PEP 517) ... [?25ldone
-    [?25h  Created wheel for pycocotools: filename=pycocotools-2.0.4-cp39-cp39-linux_x86_64.whl size=103609 sha256=128ef223cd1f8dd7b2fff6b1e1b4cd54b1a99ddf5201c08a93a32bb8fac06f2d
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/7e/b0/8e/f2c3593944ead79f5146d057d1310ee6d7b60d30b826779846
-      Building wheel for seqeval (setup.py) ... [?25ldone
-    [?25h  Created wheel for seqeval: filename=seqeval-1.2.2-py3-none-any.whl size=16180 sha256=e018962b1ec240867d1922631f6ee71b91f50cc4f183d0e8fc3621333de08545
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/e2/a5/92/2c80d1928733611c2747a9820e1324a6835524d9411510c142
-      Building wheel for future (setup.py) ... [?25ldone
-    [?25h  Created wheel for future: filename=future-0.18.2-py3-none-any.whl size=491070 sha256=bfa636879c4c7ace4e73f9503f31a39fcbd5b6187317090d8579f13b0ee0c0ac
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/2f/a0/d3/4030d9f80e6b3be787f19fc911b8e7aa462986a40ab1e4bb94
-      Building wheel for promise (setup.py) ... [?25ldone
-    [?25h  Created wheel for promise: filename=promise-2.3-py3-none-any.whl size=21503 sha256=a0b5ba58931c82628cff08098d31ee1fa7560da0a435ace40e10cd307e66942e
-      Stored in directory: /home/ubuntu-20/.cache/pip/wheels/e1/e8/83/ddea66100678d139b14bc87692ece57c6a2a937956d2532608
-    Successfully built object-detection kaggle py-cpuinfo apache-beam crcmod dill avro-python3 docopt pycocotools seqeval future promise
-    Installing collected packages: google-auth, pyparsing, numpy, typing-extensions, threadpoolctl, text-unidecode, tensorflow-io-gcs-filesystem, tensorflow-estimator, pillow, libclang, kiwisolver, keras, joblib, httplib2, googleapis-common-protos, fonttools, cycler, uritemplate, typeguard, tqdm, tensorflow-metadata, tensorflow-hub, tensorflow, tabulate, scikit-learn, regex, pytz, python-slugify, promise, portalocker, matplotlib, google-auth-httplib2, google-api-core, future, docopt, dm-tree, dill, colorama, tf-slim, tensorflow-text, tensorflow-model-optimization, tensorflow-datasets, tensorflow-addons, seqeval, sentencepiece, sacrebleu, pyyaml, pymongo, pydot, pycocotools, pyarrow, py-cpuinfo, psutil, proto-plus, pandas, orjson, opencv-python-headless, opencv-python, oauth2client, kaggle, hdfs, google-api-python-client, gin-config, fastavro, crcmod, tf-models-official, tensorflow-io, lxml, lvis, contextlib2, avro-python3, apache-beam, object-detection
-      Attempting uninstall: google-auth
-        Found existing installation: google-auth 1.21.3
-        Uninstalling google-auth-1.21.3:
-          Successfully uninstalled google-auth-1.21.3
-      Attempting uninstall: pyparsing
-        Found existing installation: pyparsing 3.0.7
-        Uninstalling pyparsing-3.0.7:
-          Successfully uninstalled pyparsing-3.0.7
-      Attempting uninstall: numpy
-        Found existing installation: numpy 1.19.2
-        Uninstalling numpy-1.19.2:
-          Successfully uninstalled numpy-1.19.2
-      Attempting uninstall: typing-extensions
-        Found existing installation: typing-extensions 4.0.1
-        Uninstalling typing-extensions-4.0.1:
-          Successfully uninstalled typing-extensions-4.0.1
-      Attempting uninstall: tensorflow-estimator
-        Found existing installation: tensorflow-estimator 2.4.0
-        Uninstalling tensorflow-estimator-2.4.0:
-          Successfully uninstalled tensorflow-estimator-2.4.0
-      Attempting uninstall: tensorflow
-        Found existing installation: tensorflow 2.4.1
-        Uninstalling tensorflow-2.4.1:
-          Successfully uninstalled tensorflow-2.4.1
     Successfully installed apache-beam-2.35.0 avro-python3-1.10.2 colorama-0.4.4 contextlib2-21.6.0 crcmod-1.7 cycler-0.11.0 dill-0.3.1.1 dm-tree-0.1.6 docopt-0.6.2 fastavro-1.4.9 fonttools-4.29.0 future-0.18.2 gin-config-0.5.0 google-api-core-2.4.0 google-api-python-client-2.36.0 google-auth-1.35.0 google-auth-httplib2-0.1.0 googleapis-common-protos-1.54.0 hdfs-2.6.0 httplib2-0.19.1 joblib-1.1.0 kaggle-1.5.12 keras-2.7.0 kiwisolver-1.3.2 libclang-12.0.0 lvis-0.5.3 lxml-4.7.1 matplotlib-3.5.1 numpy-1.20.3 oauth2client-4.1.3 object-detection-0.1 opencv-python-4.5.5.62 opencv-python-headless-4.5.5.62 orjson-3.6.6 pandas-1.4.0 pillow-9.0.0 portalocker-2.3.2 promise-2.3 proto-plus-1.19.9 psutil-5.9.0 py-cpuinfo-8.0.0 pyarrow-6.0.1 pycocotools-2.0.4 pydot-1.4.2 pymongo-3.12.3 pyparsing-2.4.7 python-slugify-5.0.2 pytz-2021.3 pyyaml-6.0 regex-2022.1.18 sacrebleu-2.0.0 scikit-learn-1.0.2 sentencepiece-0.1.96 seqeval-1.2.2 tabulate-0.8.9 tensorflow-2.7.0 tensorflow-addons-0.15.0 tensorflow-datasets-4.4.0 tensorflow-estimator-2.7.0 tensorflow-hub-0.12.0 tensorflow-io-0.23.1 tensorflow-io-gcs-filesystem-0.23.1 tensorflow-metadata-1.6.0 tensorflow-model-optimization-0.7.0 tensorflow-text-2.7.3 text-unidecode-1.3 tf-models-official-2.7.0 tf-slim-1.1.0 threadpoolctl-3.0.0 tqdm-4.62.3 typeguard-2.13.3 typing-extensions-3.10.0.2 uritemplate-4.1.1
 
 
@@ -605,276 +181,8 @@ Now object detection setup is done. You can verify the installation by executing
 ```python
 !python object_detection/builders/model_builder_tf2_test.py
 ```
-
-    2022-01-26 14:06:57.624502: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:939] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-    2022-01-26 14:06:57.627064: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusolver.so.11'; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda/lib64
-    2022-01-26 14:06:57.627577: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
-    Skipping registering GPU devices...
-    Running tests under Python 3.9.7: /home/ubuntu-20/anaconda3/envs/tensorflow/bin/python
-    [ RUN      ] ModelBuilderTF2Test.test_create_center_net_deepmac
-    2022-01-26 14:06:57.633834: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-    To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-    /home/ubuntu-20/anaconda3/envs/tensorflow/lib/python3.9/site-packages/object_detection/builders/model_builder.py:1100: DeprecationWarning: The 'warn' function is deprecated, use 'warning' instead
-      logging.warn(('Building experimental DeepMAC meta-arch.'
-    W0126 14:06:57.887338 139775303639424 model_builder.py:1100] Building experimental DeepMAC meta-arch. Some features may be omitted.
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_center_net_deepmac): 0.43s
-    I0126 14:06:58.056958 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_center_net_deepmac): 0.43s
-    [       OK ] ModelBuilderTF2Test.test_create_center_net_deepmac
-    [ RUN      ] ModelBuilderTF2Test.test_create_center_net_model0 (customize_head_params=True)
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_center_net_model0 (customize_head_params=True)): 0.32s
-    I0126 14:06:58.382251 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_center_net_model0 (customize_head_params=True)): 0.32s
-    [       OK ] ModelBuilderTF2Test.test_create_center_net_model0 (customize_head_params=True)
-    [ RUN      ] ModelBuilderTF2Test.test_create_center_net_model1 (customize_head_params=False)
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_center_net_model1 (customize_head_params=False)): 0.18s
-    I0126 14:06:58.560569 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_center_net_model1 (customize_head_params=False)): 0.18s
-    [       OK ] ModelBuilderTF2Test.test_create_center_net_model1 (customize_head_params=False)
-    [ RUN      ] ModelBuilderTF2Test.test_create_center_net_model_from_keypoints
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_center_net_model_from_keypoints): 0.27s
-    I0126 14:06:58.836110 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_center_net_model_from_keypoints): 0.27s
-    [       OK ] ModelBuilderTF2Test.test_create_center_net_model_from_keypoints
-    [ RUN      ] ModelBuilderTF2Test.test_create_center_net_model_mobilenet
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_center_net_model_mobilenet): 1.94s
-    I0126 14:07:00.775264 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_center_net_model_mobilenet): 1.94s
-    [       OK ] ModelBuilderTF2Test.test_create_center_net_model_mobilenet
-    [ RUN      ] ModelBuilderTF2Test.test_create_experimental_model
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_experimental_model): 0.0s
-    I0126 14:07:00.776373 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_experimental_model): 0.0s
-    [       OK ] ModelBuilderTF2Test.test_create_experimental_model
-    [ RUN      ] ModelBuilderTF2Test.test_create_faster_rcnn_from_config_with_crop_feature0 (True)
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_from_config_with_crop_feature0 (True)): 0.02s
-    I0126 14:07:00.794725 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_from_config_with_crop_feature0 (True)): 0.02s
-    [       OK ] ModelBuilderTF2Test.test_create_faster_rcnn_from_config_with_crop_feature0 (True)
-    [ RUN      ] ModelBuilderTF2Test.test_create_faster_rcnn_from_config_with_crop_feature1 (False)
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_from_config_with_crop_feature1 (False)): 0.01s
-    I0126 14:07:00.804883 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_from_config_with_crop_feature1 (False)): 0.01s
-    [       OK ] ModelBuilderTF2Test.test_create_faster_rcnn_from_config_with_crop_feature1 (False)
-    [ RUN      ] ModelBuilderTF2Test.test_create_faster_rcnn_model_from_config_with_example_miner
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_model_from_config_with_example_miner): 0.01s
-    I0126 14:07:00.815815 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_model_from_config_with_example_miner): 0.01s
-    [       OK ] ModelBuilderTF2Test.test_create_faster_rcnn_model_from_config_with_example_miner
-    [ RUN      ] ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_faster_rcnn_with_matmul
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_faster_rcnn_with_matmul): 0.08s
-    I0126 14:07:00.892999 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_faster_rcnn_with_matmul): 0.08s
-    [       OK ] ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_faster_rcnn_with_matmul
-    [ RUN      ] ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_faster_rcnn_without_matmul
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_faster_rcnn_without_matmul): 0.08s
-    I0126 14:07:00.975105 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_faster_rcnn_without_matmul): 0.08s
-    [       OK ] ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_faster_rcnn_without_matmul
-    [ RUN      ] ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_mask_rcnn_with_matmul
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_mask_rcnn_with_matmul): 0.08s
-    I0126 14:07:01.056505 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_mask_rcnn_with_matmul): 0.08s
-    [       OK ] ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_mask_rcnn_with_matmul
-    [ RUN      ] ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_mask_rcnn_without_matmul
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_mask_rcnn_without_matmul): 0.07s
-    I0126 14:07:01.129811 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_mask_rcnn_without_matmul): 0.07s
-    [       OK ] ModelBuilderTF2Test.test_create_faster_rcnn_models_from_config_mask_rcnn_without_matmul
-    [ RUN      ] ModelBuilderTF2Test.test_create_rfcn_model_from_config
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_rfcn_model_from_config): 0.22s
-    I0126 14:07:01.345800 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_rfcn_model_from_config): 0.22s
-    [       OK ] ModelBuilderTF2Test.test_create_rfcn_model_from_config
-    [ RUN      ] ModelBuilderTF2Test.test_create_ssd_fpn_model_from_config
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_ssd_fpn_model_from_config): 0.02s
-    I0126 14:07:01.367722 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_ssd_fpn_model_from_config): 0.02s
-    [       OK ] ModelBuilderTF2Test.test_create_ssd_fpn_model_from_config
-    [ RUN      ] ModelBuilderTF2Test.test_create_ssd_models_from_config
-    I0126 14:07:01.496387 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:145] EfficientDet EfficientNet backbone version: efficientnet-b0
-    I0126 14:07:01.496513 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:147] EfficientDet BiFPN num filters: 64
-    I0126 14:07:01.496586 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:148] EfficientDet BiFPN num iterations: 3
-    I0126 14:07:01.498541 139775303639424 efficientnet_model.py:147] round_filter input=32 output=32
-    I0126 14:07:01.511177 139775303639424 efficientnet_model.py:147] round_filter input=32 output=32
-    I0126 14:07:01.511280 139775303639424 efficientnet_model.py:147] round_filter input=16 output=16
-    I0126 14:07:01.567244 139775303639424 efficientnet_model.py:147] round_filter input=16 output=16
-    I0126 14:07:01.567365 139775303639424 efficientnet_model.py:147] round_filter input=24 output=24
-    I0126 14:07:01.709391 139775303639424 efficientnet_model.py:147] round_filter input=24 output=24
-    I0126 14:07:01.709509 139775303639424 efficientnet_model.py:147] round_filter input=40 output=40
-    I0126 14:07:01.866763 139775303639424 efficientnet_model.py:147] round_filter input=40 output=40
-    I0126 14:07:01.866876 139775303639424 efficientnet_model.py:147] round_filter input=80 output=80
-    I0126 14:07:02.097244 139775303639424 efficientnet_model.py:147] round_filter input=80 output=80
-    I0126 14:07:02.097411 139775303639424 efficientnet_model.py:147] round_filter input=112 output=112
-    I0126 14:07:02.300666 139775303639424 efficientnet_model.py:147] round_filter input=112 output=112
-    I0126 14:07:02.300801 139775303639424 efficientnet_model.py:147] round_filter input=192 output=192
-    I0126 14:07:02.603019 139775303639424 efficientnet_model.py:147] round_filter input=192 output=192
-    I0126 14:07:02.603131 139775303639424 efficientnet_model.py:147] round_filter input=320 output=320
-    I0126 14:07:02.672072 139775303639424 efficientnet_model.py:147] round_filter input=1280 output=1280
-    I0126 14:07:02.704981 139775303639424 efficientnet_model.py:457] Building model efficientnet with params ModelConfig(width_coefficient=1.0, depth_coefficient=1.0, resolution=224, dropout_rate=0.2, blocks=(BlockConfig(input_filters=32, output_filters=16, kernel_size=3, num_repeat=1, expand_ratio=1, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=16, output_filters=24, kernel_size=3, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=24, output_filters=40, kernel_size=5, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=40, output_filters=80, kernel_size=3, num_repeat=3, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=80, output_filters=112, kernel_size=5, num_repeat=3, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=112, output_filters=192, kernel_size=5, num_repeat=4, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=192, output_filters=320, kernel_size=3, num_repeat=1, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise')), stem_base_filters=32, top_base_filters=1280, activation='simple_swish', batch_norm='default', bn_momentum=0.99, bn_epsilon=0.001, weight_decay=5e-06, drop_connect_rate=0.2, depth_divisor=8, min_depth=None, use_se=True, input_channels=3, num_classes=1000, model_name='efficientnet', rescale_input=False, data_format='channels_last', dtype='float32')
-    I0126 14:07:02.740081 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:145] EfficientDet EfficientNet backbone version: efficientnet-b1
-    I0126 14:07:02.740202 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:147] EfficientDet BiFPN num filters: 88
-    I0126 14:07:02.740279 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:148] EfficientDet BiFPN num iterations: 4
-    I0126 14:07:02.741616 139775303639424 efficientnet_model.py:147] round_filter input=32 output=32
-    I0126 14:07:02.757367 139775303639424 efficientnet_model.py:147] round_filter input=32 output=32
-    I0126 14:07:02.757482 139775303639424 efficientnet_model.py:147] round_filter input=16 output=16
-    I0126 14:07:02.892325 139775303639424 efficientnet_model.py:147] round_filter input=16 output=16
-    I0126 14:07:02.892455 139775303639424 efficientnet_model.py:147] round_filter input=24 output=24
-    I0126 14:07:03.140067 139775303639424 efficientnet_model.py:147] round_filter input=24 output=24
-    I0126 14:07:03.140193 139775303639424 efficientnet_model.py:147] round_filter input=40 output=40
-    I0126 14:07:03.355316 139775303639424 efficientnet_model.py:147] round_filter input=40 output=40
-    I0126 14:07:03.355602 139775303639424 efficientnet_model.py:147] round_filter input=80 output=80
-    I0126 14:07:03.704387 139775303639424 efficientnet_model.py:147] round_filter input=80 output=80
-    I0126 14:07:03.704514 139775303639424 efficientnet_model.py:147] round_filter input=112 output=112
-    I0126 14:07:04.048340 139775303639424 efficientnet_model.py:147] round_filter input=112 output=112
-    I0126 14:07:04.048468 139775303639424 efficientnet_model.py:147] round_filter input=192 output=192
-    I0126 14:07:04.445351 139775303639424 efficientnet_model.py:147] round_filter input=192 output=192
-    I0126 14:07:04.445484 139775303639424 efficientnet_model.py:147] round_filter input=320 output=320
-    I0126 14:07:04.601372 139775303639424 efficientnet_model.py:147] round_filter input=1280 output=1280
-    I0126 14:07:04.637036 139775303639424 efficientnet_model.py:457] Building model efficientnet with params ModelConfig(width_coefficient=1.0, depth_coefficient=1.1, resolution=240, dropout_rate=0.2, blocks=(BlockConfig(input_filters=32, output_filters=16, kernel_size=3, num_repeat=1, expand_ratio=1, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=16, output_filters=24, kernel_size=3, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=24, output_filters=40, kernel_size=5, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=40, output_filters=80, kernel_size=3, num_repeat=3, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=80, output_filters=112, kernel_size=5, num_repeat=3, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=112, output_filters=192, kernel_size=5, num_repeat=4, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=192, output_filters=320, kernel_size=3, num_repeat=1, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise')), stem_base_filters=32, top_base_filters=1280, activation='simple_swish', batch_norm='default', bn_momentum=0.99, bn_epsilon=0.001, weight_decay=5e-06, drop_connect_rate=0.2, depth_divisor=8, min_depth=None, use_se=True, input_channels=3, num_classes=1000, model_name='efficientnet', rescale_input=False, data_format='channels_last', dtype='float32')
-    I0126 14:07:04.813985 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:145] EfficientDet EfficientNet backbone version: efficientnet-b2
-    I0126 14:07:04.814128 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:147] EfficientDet BiFPN num filters: 112
-    I0126 14:07:04.814162 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:148] EfficientDet BiFPN num iterations: 5
-    I0126 14:07:04.815535 139775303639424 efficientnet_model.py:147] round_filter input=32 output=32
-    I0126 14:07:04.835434 139775303639424 efficientnet_model.py:147] round_filter input=32 output=32
-    I0126 14:07:04.835582 139775303639424 efficientnet_model.py:147] round_filter input=16 output=16
-    I0126 14:07:04.986997 139775303639424 efficientnet_model.py:147] round_filter input=16 output=16
-    I0126 14:07:04.987106 139775303639424 efficientnet_model.py:147] round_filter input=24 output=24
-    I0126 14:07:05.199536 139775303639424 efficientnet_model.py:147] round_filter input=24 output=24
-    I0126 14:07:05.199649 139775303639424 efficientnet_model.py:147] round_filter input=40 output=48
-    I0126 14:07:05.415032 139775303639424 efficientnet_model.py:147] round_filter input=40 output=48
-    I0126 14:07:05.415156 139775303639424 efficientnet_model.py:147] round_filter input=80 output=88
-    I0126 14:07:05.802588 139775303639424 efficientnet_model.py:147] round_filter input=80 output=88
-    I0126 14:07:05.802737 139775303639424 efficientnet_model.py:147] round_filter input=112 output=120
-    I0126 14:07:06.088043 139775303639424 efficientnet_model.py:147] round_filter input=112 output=120
-    I0126 14:07:06.088167 139775303639424 efficientnet_model.py:147] round_filter input=192 output=208
-    I0126 14:07:06.498754 139775303639424 efficientnet_model.py:147] round_filter input=192 output=208
-    I0126 14:07:06.498878 139775303639424 efficientnet_model.py:147] round_filter input=320 output=352
-    I0126 14:07:06.645416 139775303639424 efficientnet_model.py:147] round_filter input=1280 output=1408
-    I0126 14:07:06.686201 139775303639424 efficientnet_model.py:457] Building model efficientnet with params ModelConfig(width_coefficient=1.1, depth_coefficient=1.2, resolution=260, dropout_rate=0.3, blocks=(BlockConfig(input_filters=32, output_filters=16, kernel_size=3, num_repeat=1, expand_ratio=1, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=16, output_filters=24, kernel_size=3, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=24, output_filters=40, kernel_size=5, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=40, output_filters=80, kernel_size=3, num_repeat=3, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=80, output_filters=112, kernel_size=5, num_repeat=3, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=112, output_filters=192, kernel_size=5, num_repeat=4, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=192, output_filters=320, kernel_size=3, num_repeat=1, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise')), stem_base_filters=32, top_base_filters=1280, activation='simple_swish', batch_norm='default', bn_momentum=0.99, bn_epsilon=0.001, weight_decay=5e-06, drop_connect_rate=0.2, depth_divisor=8, min_depth=None, use_se=True, input_channels=3, num_classes=1000, model_name='efficientnet', rescale_input=False, data_format='channels_last', dtype='float32')
-    I0126 14:07:06.730251 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:145] EfficientDet EfficientNet backbone version: efficientnet-b3
-    I0126 14:07:06.730380 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:147] EfficientDet BiFPN num filters: 160
-    I0126 14:07:06.730456 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:148] EfficientDet BiFPN num iterations: 6
-    I0126 14:07:06.731891 139775303639424 efficientnet_model.py:147] round_filter input=32 output=40
-    I0126 14:07:06.744326 139775303639424 efficientnet_model.py:147] round_filter input=32 output=40
-    I0126 14:07:06.744479 139775303639424 efficientnet_model.py:147] round_filter input=16 output=24
-    I0126 14:07:06.844000 139775303639424 efficientnet_model.py:147] round_filter input=16 output=24
-    I0126 14:07:06.844130 139775303639424 efficientnet_model.py:147] round_filter input=24 output=32
-    I0126 14:07:07.060233 139775303639424 efficientnet_model.py:147] round_filter input=24 output=32
-    I0126 14:07:07.060352 139775303639424 efficientnet_model.py:147] round_filter input=40 output=48
-    I0126 14:07:07.298660 139775303639424 efficientnet_model.py:147] round_filter input=40 output=48
-    I0126 14:07:07.298794 139775303639424 efficientnet_model.py:147] round_filter input=80 output=96
-    I0126 14:07:07.688406 139775303639424 efficientnet_model.py:147] round_filter input=80 output=96
-    I0126 14:07:07.688540 139775303639424 efficientnet_model.py:147] round_filter input=112 output=136
-    I0126 14:07:08.108583 139775303639424 efficientnet_model.py:147] round_filter input=112 output=136
-    I0126 14:07:08.108700 139775303639424 efficientnet_model.py:147] round_filter input=192 output=232
-    I0126 14:07:08.575955 139775303639424 efficientnet_model.py:147] round_filter input=192 output=232
-    I0126 14:07:08.576074 139775303639424 efficientnet_model.py:147] round_filter input=320 output=384
-    I0126 14:07:08.739605 139775303639424 efficientnet_model.py:147] round_filter input=1280 output=1536
-    I0126 14:07:08.774342 139775303639424 efficientnet_model.py:457] Building model efficientnet with params ModelConfig(width_coefficient=1.2, depth_coefficient=1.4, resolution=300, dropout_rate=0.3, blocks=(BlockConfig(input_filters=32, output_filters=16, kernel_size=3, num_repeat=1, expand_ratio=1, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=16, output_filters=24, kernel_size=3, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=24, output_filters=40, kernel_size=5, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=40, output_filters=80, kernel_size=3, num_repeat=3, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=80, output_filters=112, kernel_size=5, num_repeat=3, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=112, output_filters=192, kernel_size=5, num_repeat=4, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=192, output_filters=320, kernel_size=3, num_repeat=1, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise')), stem_base_filters=32, top_base_filters=1280, activation='simple_swish', batch_norm='default', bn_momentum=0.99, bn_epsilon=0.001, weight_decay=5e-06, drop_connect_rate=0.2, depth_divisor=8, min_depth=None, use_se=True, input_channels=3, num_classes=1000, model_name='efficientnet', rescale_input=False, data_format='channels_last', dtype='float32')
-    I0126 14:07:08.827544 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:145] EfficientDet EfficientNet backbone version: efficientnet-b4
-    I0126 14:07:08.827677 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:147] EfficientDet BiFPN num filters: 224
-    I0126 14:07:08.827760 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:148] EfficientDet BiFPN num iterations: 7
-    I0126 14:07:08.829215 139775303639424 efficientnet_model.py:147] round_filter input=32 output=48
-    I0126 14:07:08.845425 139775303639424 efficientnet_model.py:147] round_filter input=32 output=48
-    I0126 14:07:08.845582 139775303639424 efficientnet_model.py:147] round_filter input=16 output=24
-    I0126 14:07:08.958070 139775303639424 efficientnet_model.py:147] round_filter input=16 output=24
-    I0126 14:07:08.958185 139775303639424 efficientnet_model.py:147] round_filter input=24 output=32
-    I0126 14:07:09.225388 139775303639424 efficientnet_model.py:147] round_filter input=24 output=32
-    I0126 14:07:09.225503 139775303639424 efficientnet_model.py:147] round_filter input=40 output=56
-    I0126 14:07:09.997115 139775303639424 efficientnet_model.py:147] round_filter input=40 output=56
-    I0126 14:07:09.997481 139775303639424 efficientnet_model.py:147] round_filter input=80 output=112
-    I0126 14:07:10.618946 139775303639424 efficientnet_model.py:147] round_filter input=80 output=112
-    I0126 14:07:10.619070 139775303639424 efficientnet_model.py:147] round_filter input=112 output=160
-    I0126 14:07:11.172519 139775303639424 efficientnet_model.py:147] round_filter input=112 output=160
-    I0126 14:07:11.172716 139775303639424 efficientnet_model.py:147] round_filter input=192 output=272
-    I0126 14:07:11.924983 139775303639424 efficientnet_model.py:147] round_filter input=192 output=272
-    I0126 14:07:11.925154 139775303639424 efficientnet_model.py:147] round_filter input=320 output=448
-    I0126 14:07:12.110312 139775303639424 efficientnet_model.py:147] round_filter input=1280 output=1792
-    I0126 14:07:12.156013 139775303639424 efficientnet_model.py:457] Building model efficientnet with params ModelConfig(width_coefficient=1.4, depth_coefficient=1.8, resolution=380, dropout_rate=0.4, blocks=(BlockConfig(input_filters=32, output_filters=16, kernel_size=3, num_repeat=1, expand_ratio=1, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=16, output_filters=24, kernel_size=3, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=24, output_filters=40, kernel_size=5, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=40, output_filters=80, kernel_size=3, num_repeat=3, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=80, output_filters=112, kernel_size=5, num_repeat=3, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=112, output_filters=192, kernel_size=5, num_repeat=4, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=192, output_filters=320, kernel_size=3, num_repeat=1, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise')), stem_base_filters=32, top_base_filters=1280, activation='simple_swish', batch_norm='default', bn_momentum=0.99, bn_epsilon=0.001, weight_decay=5e-06, drop_connect_rate=0.2, depth_divisor=8, min_depth=None, use_se=True, input_channels=3, num_classes=1000, model_name='efficientnet', rescale_input=False, data_format='channels_last', dtype='float32')
-    I0126 14:07:12.216317 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:145] EfficientDet EfficientNet backbone version: efficientnet-b5
-    I0126 14:07:12.216438 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:147] EfficientDet BiFPN num filters: 288
-    I0126 14:07:12.216550 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:148] EfficientDet BiFPN num iterations: 7
-    I0126 14:07:12.217988 139775303639424 efficientnet_model.py:147] round_filter input=32 output=48
-    I0126 14:07:12.233840 139775303639424 efficientnet_model.py:147] round_filter input=32 output=48
-    I0126 14:07:12.233994 139775303639424 efficientnet_model.py:147] round_filter input=16 output=24
-    I0126 14:07:12.442352 139775303639424 efficientnet_model.py:147] round_filter input=16 output=24
-    I0126 14:07:12.442608 139775303639424 efficientnet_model.py:147] round_filter input=24 output=40
-    I0126 14:07:12.901839 139775303639424 efficientnet_model.py:147] round_filter input=24 output=40
-    I0126 14:07:12.901962 139775303639424 efficientnet_model.py:147] round_filter input=40 output=64
-    I0126 14:07:13.358628 139775303639424 efficientnet_model.py:147] round_filter input=40 output=64
-    I0126 14:07:13.358763 139775303639424 efficientnet_model.py:147] round_filter input=80 output=128
-    I0126 14:07:13.977698 139775303639424 efficientnet_model.py:147] round_filter input=80 output=128
-    I0126 14:07:13.977850 139775303639424 efficientnet_model.py:147] round_filter input=112 output=176
-    I0126 14:07:14.595020 139775303639424 efficientnet_model.py:147] round_filter input=112 output=176
-    I0126 14:07:14.595132 139775303639424 efficientnet_model.py:147] round_filter input=192 output=304
-    I0126 14:07:15.408861 139775303639424 efficientnet_model.py:147] round_filter input=192 output=304
-    I0126 14:07:15.408992 139775303639424 efficientnet_model.py:147] round_filter input=320 output=512
-    I0126 14:07:15.911651 139775303639424 efficientnet_model.py:147] round_filter input=1280 output=2048
-    I0126 14:07:15.955137 139775303639424 efficientnet_model.py:457] Building model efficientnet with params ModelConfig(width_coefficient=1.6, depth_coefficient=2.2, resolution=456, dropout_rate=0.4, blocks=(BlockConfig(input_filters=32, output_filters=16, kernel_size=3, num_repeat=1, expand_ratio=1, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=16, output_filters=24, kernel_size=3, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=24, output_filters=40, kernel_size=5, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=40, output_filters=80, kernel_size=3, num_repeat=3, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=80, output_filters=112, kernel_size=5, num_repeat=3, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=112, output_filters=192, kernel_size=5, num_repeat=4, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=192, output_filters=320, kernel_size=3, num_repeat=1, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise')), stem_base_filters=32, top_base_filters=1280, activation='simple_swish', batch_norm='default', bn_momentum=0.99, bn_epsilon=0.001, weight_decay=5e-06, drop_connect_rate=0.2, depth_divisor=8, min_depth=None, use_se=True, input_channels=3, num_classes=1000, model_name='efficientnet', rescale_input=False, data_format='channels_last', dtype='float32')
-    I0126 14:07:16.027103 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:145] EfficientDet EfficientNet backbone version: efficientnet-b6
-    I0126 14:07:16.027235 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:147] EfficientDet BiFPN num filters: 384
-    I0126 14:07:16.027269 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:148] EfficientDet BiFPN num iterations: 8
-    I0126 14:07:16.028584 139775303639424 efficientnet_model.py:147] round_filter input=32 output=56
-    I0126 14:07:16.044325 139775303639424 efficientnet_model.py:147] round_filter input=32 output=56
-    I0126 14:07:16.044440 139775303639424 efficientnet_model.py:147] round_filter input=16 output=32
-    I0126 14:07:16.250075 139775303639424 efficientnet_model.py:147] round_filter input=16 output=32
-    I0126 14:07:16.250248 139775303639424 efficientnet_model.py:147] round_filter input=24 output=40
-    I0126 14:07:16.787415 139775303639424 efficientnet_model.py:147] round_filter input=24 output=40
-    I0126 14:07:16.787561 139775303639424 efficientnet_model.py:147] round_filter input=40 output=72
-    I0126 14:07:17.292409 139775303639424 efficientnet_model.py:147] round_filter input=40 output=72
-    I0126 14:07:17.292533 139775303639424 efficientnet_model.py:147] round_filter input=80 output=144
-    I0126 14:07:18.011171 139775303639424 efficientnet_model.py:147] round_filter input=80 output=144
-    I0126 14:07:18.011286 139775303639424 efficientnet_model.py:147] round_filter input=112 output=200
-    I0126 14:07:18.725660 139775303639424 efficientnet_model.py:147] round_filter input=112 output=200
-    I0126 14:07:18.725782 139775303639424 efficientnet_model.py:147] round_filter input=192 output=344
-    I0126 14:07:19.761791 139775303639424 efficientnet_model.py:147] round_filter input=192 output=344
-    I0126 14:07:19.761954 139775303639424 efficientnet_model.py:147] round_filter input=320 output=576
-    I0126 14:07:20.048552 139775303639424 efficientnet_model.py:147] round_filter input=1280 output=2304
-    I0126 14:07:20.091845 139775303639424 efficientnet_model.py:457] Building model efficientnet with params ModelConfig(width_coefficient=1.8, depth_coefficient=2.6, resolution=528, dropout_rate=0.5, blocks=(BlockConfig(input_filters=32, output_filters=16, kernel_size=3, num_repeat=1, expand_ratio=1, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=16, output_filters=24, kernel_size=3, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=24, output_filters=40, kernel_size=5, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=40, output_filters=80, kernel_size=3, num_repeat=3, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=80, output_filters=112, kernel_size=5, num_repeat=3, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=112, output_filters=192, kernel_size=5, num_repeat=4, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=192, output_filters=320, kernel_size=3, num_repeat=1, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise')), stem_base_filters=32, top_base_filters=1280, activation='simple_swish', batch_norm='default', bn_momentum=0.99, bn_epsilon=0.001, weight_decay=5e-06, drop_connect_rate=0.2, depth_divisor=8, min_depth=None, use_se=True, input_channels=3, num_classes=1000, model_name='efficientnet', rescale_input=False, data_format='channels_last', dtype='float32')
-    I0126 14:07:20.166972 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:145] EfficientDet EfficientNet backbone version: efficientnet-b7
-    I0126 14:07:20.167091 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:147] EfficientDet BiFPN num filters: 384
-    I0126 14:07:20.167124 139775303639424 ssd_efficientnet_bifpn_feature_extractor.py:148] EfficientDet BiFPN num iterations: 8
-    I0126 14:07:20.168422 139775303639424 efficientnet_model.py:147] round_filter input=32 output=64
-    I0126 14:07:20.185153 139775303639424 efficientnet_model.py:147] round_filter input=32 output=64
-    I0126 14:07:20.185356 139775303639424 efficientnet_model.py:147] round_filter input=16 output=32
-    I0126 14:07:20.498679 139775303639424 efficientnet_model.py:147] round_filter input=16 output=32
-    I0126 14:07:20.498799 139775303639424 efficientnet_model.py:147] round_filter input=24 output=48
-    I0126 14:07:21.150535 139775303639424 efficientnet_model.py:147] round_filter input=24 output=48
-    I0126 14:07:21.150656 139775303639424 efficientnet_model.py:147] round_filter input=40 output=80
-    I0126 14:07:22.106084 139775303639424 efficientnet_model.py:147] round_filter input=40 output=80
-    I0126 14:07:22.106252 139775303639424 efficientnet_model.py:147] round_filter input=80 output=160
-    I0126 14:07:23.065239 139775303639424 efficientnet_model.py:147] round_filter input=80 output=160
-    I0126 14:07:23.065360 139775303639424 efficientnet_model.py:147] round_filter input=112 output=224
-    I0126 14:07:23.981920 139775303639424 efficientnet_model.py:147] round_filter input=112 output=224
-    I0126 14:07:23.982052 139775303639424 efficientnet_model.py:147] round_filter input=192 output=384
-    I0126 14:07:25.154724 139775303639424 efficientnet_model.py:147] round_filter input=192 output=384
-    I0126 14:07:25.154839 139775303639424 efficientnet_model.py:147] round_filter input=320 output=640
-    I0126 14:07:25.557402 139775303639424 efficientnet_model.py:147] round_filter input=1280 output=2560
-    I0126 14:07:25.597800 139775303639424 efficientnet_model.py:457] Building model efficientnet with params ModelConfig(width_coefficient=2.0, depth_coefficient=3.1, resolution=600, dropout_rate=0.5, blocks=(BlockConfig(input_filters=32, output_filters=16, kernel_size=3, num_repeat=1, expand_ratio=1, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=16, output_filters=24, kernel_size=3, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=24, output_filters=40, kernel_size=5, num_repeat=2, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=40, output_filters=80, kernel_size=3, num_repeat=3, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=80, output_filters=112, kernel_size=5, num_repeat=3, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=112, output_filters=192, kernel_size=5, num_repeat=4, expand_ratio=6, strides=(2, 2), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise'), BlockConfig(input_filters=192, output_filters=320, kernel_size=3, num_repeat=1, expand_ratio=6, strides=(1, 1), se_ratio=0.25, id_skip=True, fused_conv=False, conv_type='depthwise')), stem_base_filters=32, top_base_filters=1280, activation='simple_swish', batch_norm='default', bn_momentum=0.99, bn_epsilon=0.001, weight_decay=5e-06, drop_connect_rate=0.2, depth_divisor=8, min_depth=None, use_se=True, input_channels=3, num_classes=1000, model_name='efficientnet', rescale_input=False, data_format='channels_last', dtype='float32')
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_ssd_models_from_config): 24.32s
-    I0126 14:07:25.692402 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_create_ssd_models_from_config): 24.32s
-    [       OK ] ModelBuilderTF2Test.test_create_ssd_models_from_config
-    [ RUN      ] ModelBuilderTF2Test.test_invalid_faster_rcnn_batchnorm_update
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_invalid_faster_rcnn_batchnorm_update): 0.0s
-    I0126 14:07:25.702633 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_invalid_faster_rcnn_batchnorm_update): 0.0s
-    [       OK ] ModelBuilderTF2Test.test_invalid_faster_rcnn_batchnorm_update
-    [ RUN      ] ModelBuilderTF2Test.test_invalid_first_stage_nms_iou_threshold
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_invalid_first_stage_nms_iou_threshold): 0.0s
-    I0126 14:07:25.704203 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_invalid_first_stage_nms_iou_threshold): 0.0s
-    [       OK ] ModelBuilderTF2Test.test_invalid_first_stage_nms_iou_threshold
-    [ RUN      ] ModelBuilderTF2Test.test_invalid_model_config_proto
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_invalid_model_config_proto): 0.0s
-    I0126 14:07:25.704608 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_invalid_model_config_proto): 0.0s
-    [       OK ] ModelBuilderTF2Test.test_invalid_model_config_proto
-    [ RUN      ] ModelBuilderTF2Test.test_invalid_second_stage_batch_size
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_invalid_second_stage_batch_size): 0.0s
-    I0126 14:07:25.705996 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_invalid_second_stage_batch_size): 0.0s
-    [       OK ] ModelBuilderTF2Test.test_invalid_second_stage_batch_size
-    [ RUN      ] ModelBuilderTF2Test.test_session
-    [  SKIPPED ] ModelBuilderTF2Test.test_session
-    [ RUN      ] ModelBuilderTF2Test.test_unknown_faster_rcnn_feature_extractor
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_unknown_faster_rcnn_feature_extractor): 0.0s
-    I0126 14:07:25.707099 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_unknown_faster_rcnn_feature_extractor): 0.0s
-    [       OK ] ModelBuilderTF2Test.test_unknown_faster_rcnn_feature_extractor
-    [ RUN      ] ModelBuilderTF2Test.test_unknown_meta_architecture
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_unknown_meta_architecture): 0.0s
-    I0126 14:07:25.707320 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_unknown_meta_architecture): 0.0s
-    [       OK ] ModelBuilderTF2Test.test_unknown_meta_architecture
-    [ RUN      ] ModelBuilderTF2Test.test_unknown_ssd_feature_extractor
-    INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_unknown_ssd_feature_extractor): 0.0s
-    I0126 14:07:25.708297 139775303639424 test_util.py:2308] time(__main__.ModelBuilderTF2Test.test_unknown_ssd_feature_extractor): 0.0s
-    [       OK ] ModelBuilderTF2Test.test_unknown_ssd_feature_extractor
-    ----------------------------------------------------------------------
     Ran 24 tests in 28.079s
-    
     OK (skipped=1)
-
 
 ## Train Object Detection
 
