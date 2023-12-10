@@ -55,11 +55,6 @@ tf.__version__
 ```
 
     2022-01-26 13:49:37.407858: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
-
-
-
-
-
     '2.4.1'
 
 
